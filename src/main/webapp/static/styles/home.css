@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.images {
+	position: relative;
+}
+
+.images img {
+	filter: brightness(90%);
+}
+
+.card-details {
+	position: absolute;
+	top:80%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	color: fff;
+}
+
+.card-details a{
+	text-decoration: none;
+}

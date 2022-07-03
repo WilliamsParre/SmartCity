@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="base.xhtml">   
+    <ui:define name="title">
+        <title>Log In</title>
+    </ui:define>
+
+    <ui:define name="main_content">
+    	<div class="card m-5 p-3" style="border-radius: 15px;">
+    		<div class="row">
+    			<div class="col-lg-6 col-sm-12">
+    				<img src="static/images/Login.jpg" class="img-fluid w-100"/>
+    			</div>
+    			<div class="col-lg-4 col-sm-12 m-auto">
+					<h:form class="p-1">
+		        			<h2 class="mb-3 text-secondary"><strong>Log In</strong></h2>
+							<div class="form-floating mb-3">
+							  <h:inputText class="form-control" id="username" placeholder="name@example.com" value="#{login.user}"/>
+							  <label for="username">User Name</label>
+							  <h:message for="username"></h:message>
+							 </div>
+		        			<div class="form-floating mb-3">
+							  <h:inputSecret class="form-control" id="password" placeholder="Password" value="#{login.pwd}"/>
+							  <label for="password">Password</label>
+							  <h:message for="password"></h:message>
+							</div>
+							<h:commandButton action="#{login.validateUsernamePassword()}" class="btn btn-primary btn-lg btn-block w-100" value="Login" />
+		        	</h:form>
+		        </div>
+    		</div>
+    	</div>
+    </ui:define>
+</ui:composition>

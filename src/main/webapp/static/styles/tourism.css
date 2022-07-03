@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.images {
+	position: relative;
+}
+
+img {
+	border-radius: 15px;
+}
+
+.zoom div {
+	transition: transform .2s;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+	border-radius: 15px;
+}
+
+.zoom div:hover {
+	transform: scale(1.1);
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.images a:hover {
+	font-size: 10%;
+}
+
+.card-details {
+	position: absolute;
+	top:80%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	color: fff;
+}
+
+.card-details a{
+	text-decoration: none;
+}
