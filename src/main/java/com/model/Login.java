@@ -2,10 +2,8 @@ package com.model;
 
 import java.io.Serializable;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import com.dao.LoginDAO;
@@ -52,14 +50,10 @@ public class Login implements Serializable {
 		if (valid) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("username", user);
-			return "home.jsf";
+			System.out.println("I am here");
+			return "/user/home.jsf?faces-redirect=true";
 		} else {
-			FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN,
-							"Incorrect Username and Passowrd",
-							"Please enter correct username and Password"));
-			return "login.jsf";
+			return "/login.jsf?faces-redirect=true";
 		}
 	}
 
@@ -67,6 +61,6 @@ public class Login implements Serializable {
 	public String logout() {
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
-		return "login.sf";
+		return "/login.jsf?faces-redirect=true";
 	}
 }

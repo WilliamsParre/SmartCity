@@ -20,7 +20,7 @@ public class TouristSpot implements Serializable {
 	private int id;
 	private String name;
 	private String place;
-	private String loaction;
+	private String location;
 	private String start_time;
 	private String end_time;
 //	private Blob image;
@@ -49,12 +49,12 @@ public class TouristSpot implements Serializable {
 		this.place = place;
 	}
 	
-	public String getLoaction() {
-		return loaction;
+	public String getLocation() {
+		return location;
 	}
 	
-	public void setLoaction(String loaction) {
-		this.loaction = loaction;
+	public void setLocation(String loaction) {
+		this.location = loaction;
 	}
 	
 	public String getStart_time() {

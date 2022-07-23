@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="base.xhtml">   
+    <ui:define name="title">
+        <title>Contact Us</title>
+    </ui:define>
+
+    <ui:define name="main_content">
+    	<div>
+        	<div class="card m-5 border-2 p-2" style="border-radius: 15px;">
+        		<div class="row">
+		        	<div class="col-lg-5 col-sm-12">
+		        		<img src="static/images/ContactUs.jpg" class="img-fluid" alt="Responsive image"/>
+		        	</div>
+		        	<div class="col-lg-5 col-sm-12 m-auto">
+		        		<h:form class="text-secondary p-1">
+		        			<h2 class="mb-3"><strong>Contact Us</strong></h2>
+				            #{contactus.res}				             
+		        			<div class="form-group mb-3">
+		        				<label for="firstname">First Name</label>
+							  	<h:inputText class="form-control" id="firstname" value="#{contactus.first_name}"/>
+							  	<h:message for="firstname" class="text-danger" />
+							</div>
+							<div class="form-group mb-3">
+								<label for="lastname">Last Name</label>
+							  	<h:inputText class="form-control" id="lastname" value="#{contactus.last_name}"/>
+							  	<h:message for="lastname" class="text-danger" />
+							</div>
+							<div class="form-group mb-3">
+								<label for="email">Email address</label>
+							  	<h:inputText class="form-control" id="email" value="#{contactus.email}"/>
+							  <h:message for="email" class="text-danger" />
+							</div>
+							<div class="form-group mb-3">
+							   <label for="msg">Message</label>
+							   <h:inputTextarea styleClass="form-control" id="msg" value="#{contactus.message}" rows="3"/>
+							</div>
+							<h:commandButton action="#{contactus.callRegister()}" class="btn btn-primary btn-lg btn-block w-100" value="Submit" />
+		        		</h:form>
+		        	</div>
+        		</div>
+        	</div>
+        </div>
+    </ui:define>
+</ui:composition>

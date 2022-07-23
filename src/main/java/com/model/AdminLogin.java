@@ -1,20 +1,22 @@
-package com.controller;
+package com.model;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import com.dao.LoginDAO;
+import com.db.DataBase;
 import com.utils.SessionUtils;
 
 
-@ManagedBean
+@ManagedBean(name="admin_login")
 @SessionScoped
-public class LoginBean implements Serializable {
+public class AdminLogin implements Serializable {
 
 	private static final long serialVersionUID = 1094801825228386363L;
 	
@@ -48,18 +50,27 @@ public class LoginBean implements Serializable {
 
 	//validate login
 	public String validateUsernamePassword() {
-		boolean valid = LoginDAO.validate(user, pwd);
+		Connection con = DataBase.getDBConnection();
+		PreparedStatement ps;
+		boolean valid=false;
+		try {
+			ps = con.prepareStatement("select username, password from admins where username = ? and password = ?");
+			ps.setString(1, this.user);
+			ps.setString(2, this.pwd);
+
+			ResultSet rs = ps.executeQuery();
+			if (rs.next())
+				valid=true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		if (valid) {
 			HttpSession session = SessionUtils.getSession();
-			session.setAttribute("username", user);
-			return "home.jsf";
+			session.setAttribute("username", this.user);
+			return "/admin/admin.jsf?faces-redirect=true";
 		} else {
-			FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN,
-							"Incorrect Username and Passowrd",
-							"Please enter correct username and Password"));
-			return "login.jsf";
+			return "/admin_login.jsf?faces-redirect=true";
 		}
 	}
 
@@ -67,6 +78,6 @@ public class LoginBean implements Serializable {
 	public String logout() {
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
-		return "login.sf";
+		return "/admin_login.jsf?faces-redirect=true";
 	}
 }
