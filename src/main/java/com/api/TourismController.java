@@ -17,10 +17,18 @@ public class TourismController {
 	@EJB(lookup = "java:global/SmartCity-Project/TouristSpotsAccessService!com.dao.TourismDao")
 	private TourismDao t;
 	
+	public TourismDao getT() {
+		return t;
+	}
+
+	public void setT(TourismDao t) {
+		this.t = t;
+	}
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<TouristSpot> getTouristSpot() {
 		return t.getTouristSpots();
 	}
-	
+		
 }

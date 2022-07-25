@@ -1,5 +1,6 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:c="http://java.sun.com/jstl/core"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     template="base.xhtml">   
     <ui:define name="title">
@@ -16,7 +17,10 @@
 		        	<div class="col-lg-5 col-sm-12 m-auto">
 		        		<h:form class="text-secondary p-1">
 		        			<h2 class="mb-3"><strong>Contact Us</strong></h2>
-				            #{contactus.res}				             
+				            #{contactus.res}
+				            <h:form rendered="#{contactus.res != null}">
+				            </h:form>
+				            <h:outputLabel value="{#{contactus.res}" rendered=""/>			             
 		        			<div class="form-group mb-3">
 		        				<label for="firstname">First Name</label>
 							  	<h:inputText class="form-control" id="firstname" value="#{contactus.first_name}"/>
@@ -30,11 +34,12 @@
 							<div class="form-group mb-3">
 								<label for="email">Email address</label>
 							  	<h:inputText class="form-control" id="email" value="#{contactus.email}"/>
-							  <h:message for="email" class="text-danger" />
+							  	<h:message for="email" class="text-danger" />
 							</div>
 							<div class="form-group mb-3">
 							   <label for="msg">Message</label>
 							   <h:inputTextarea styleClass="form-control" id="msg" value="#{contactus.message}" rows="3"/>
+							   <h:message for="msg" class="text-danger" />
 							</div>
 							<h:commandButton action="#{contactus.callRegister()}" class="btn btn-primary btn-lg btn-block w-100" value="Submit" />
 		        		</h:form>

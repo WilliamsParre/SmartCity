@@ -14,38 +14,38 @@
 		        		<img src="static/images/SignUp2.jpg" class="img-fluid" alt="Responsive image"/>
 		        	</div>
 		        	<div class="col-lg-4 col-sm-12 m-auto">
-		        		<h:form class="p-1">
+		        		<h:form class="p-1 text-secondary">
 		        			<h2 class="mb-3 text-secondary"><strong>Sign Up</strong></h2>
-		        			<div class="form-floating mb-3">
-							  <h:inputText class="form-control" id="firstname" placeholder="Enter your first name" value="#{signup.first_name}"/>
-							  <label for="firstname">First Name</label>
-							  <h:message for="firstname" class="text-danger" />
+		        			<div class="form-group mb-2">
+		        				<label for="firstname">First Name</label>							  
+							  	<h:inputText class="form-control" id="firstname" placeholder="Enter your first name" value="#{signup.first_name}"/>
+							  	<h:message for="firstname" class="text-danger" />
 							</div>
-							<div class="form-floating mb-3">
-							  <h:inputText class="form-control" id="lastname" placeholder="Enter your last name" value="#{signup.last_name}"/>
-							  <label for="lastname">Last Name</label>
-							  <h:message for="lastname" class="text-danger" />
+							<div class="form-group mb-2">
+								<label for="lastname">Last Name</label>
+								<h:inputText class="form-control" id="lastname" placeholder="Enter your last name" value="#{signup.last_name}"/>
+								<h:message for="lastname" class="text-danger" />
 							</div>
-							<div class="form-floating mb-3">
-							  <h:inputText class="form-control" id="username" placeholder="Enter a unique username" value="#{signup.username}"/>
-							  <label for="username">User Name</label>
-							  <h:message for="username" class="text-danger" />
+							<div class="form-group mb-2">
+							  	<label for="username">User Name</label>
+							  	<h:inputText class="form-control" id="username" placeholder="Enter a unique username" value="#{signup.username}"/>
+							  	<h:message for="username" class="text-danger" />
 							</div>
-							<div class="form-floating mb-3">
-							  <h:inputText class="form-control" id="email" placeholder="name@example.com" value="#{signup.email}"/>
-							  <label for="email">Email address</label>
-							  <h:message for="email" class="text-danger" />
+							<div class="form-group mb-2">
+							  	<label for="email">Email address</label>
+							  	<h:inputText class="form-control" id="email" placeholder="name@example.com" value="#{signup.email}"/>
+							  	<h:message for="email" class="text-danger" />
 							</div>
-		        			<div class="form-floating mb-3">
-							  <h:inputSecret class="form-control" id="password1" placeholder="Password" value="#{signup.password1}"/>
-							  <label for="password1">Password</label>
-							  <h:message for="password1" class="text-danger" />
+		        			<div class="form-group mb-2">
+							  	<label for="password1">Password</label>
+							  	<h:inputSecret class="form-control" id="password1" placeholder="Password" value="#{signup.password1}"/>
+							  	<h:message for="password1" class="text-danger" />
 							</div>
-							<div class="form-floating mb-3">
-							  <h:inputSecret class="form-control" id="password2" placeholder="Re-enter Password" value="#{signup.password2}"/>
-							  <label for="password2">Password Confirmation</label>
+							<div class="form-group mb-4">
+								<label for="password2">Password Confirmation</label>
+							  	<h:inputSecret class="form-control" id="password2" placeholder="Re-enter Password" value="#{signup.password2}"/>							  	
 							</div>
-							<h:commandButton action="#{signup.register()}" class="btn btn-primary btn-lg btn-block w-100" value="Submit" />
+							<h:commandButton action="#{signup.register()}" class="btn btn-primary btn-lg btn-block w-100" value="Register" />
 		        		</h:form>
 		        	</div>
         		</div>

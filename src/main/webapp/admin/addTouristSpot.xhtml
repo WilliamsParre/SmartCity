@@ -1,0 +1,49 @@
+<ui:composition 
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+    			xmlns:c="http://java.sun.com/jsp/jstl/core"
+    			template="/admin/admin.xhtml"
+                      xmlns:p="http://richfaces.org/rich">
+    <ui:define name="admin_title">
+        <title>Add Tourist Spot</title>
+    </ui:define>
+
+    <ui:define name="admin_content">
+        <div class="col-lg-4 col-sm-12 m-auto">
+            <h:form class="p-1 text-secondary">
+                <div class="d-flex justify-content-between mb-3">
+                    <h2 class="text-secondary"><strong>Add Tourist Spot</strong></h2>
+                    <a href="manage.jsf" class="btn btn-danger mb-2">Close</a>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="name">Name</label>
+                    <h:inputText class="form-control" id="name"
+                        value="#{touristSpotBean.name}" required="true"/>
+                    <h:message for="name" class="text-danger" />
+                </div>
+                <div class="form-group mb-2">
+                    <label for="location">Location</label>
+                    <h:inputText class="form-control" id="location" value="#{touristSpotBean.location}" required="true"/>
+                    <h:message for="location" class="text-danger" />
+                </div>
+                <div class="form-group mb-2">
+                    <label for="place">Place URL</label>
+                    <h:inputText class="form-control" id="place" value="#{touristSpotBean.place}" required="true"/>
+                    <h:message for="place" class="text-danger" />
+                </div>
+                <div class="form-group mb-2">
+                    <label for="start_time">Start Time</label>
+                    <h:inputText class="form-control" id="start_time" value="#{touristSpotBean.start_time}" required="true"/>
+                    <h:message for="start_time" class="text-danger" />
+                </div>
+                <div class="form-group mb-4">
+                    <label for="end_time">End Time</label>
+                    <h:inputText class="form-control" id="end_time" value="#{touristSpotBean.end_time}" required="true"/>
+                    <h:message for="end_time" class="text-danger" />
+                </div>
+                <h:commandButton action="#{touristSpotBean.addTouristSpot()}" class="btn btn-primary btn-lg btn-block w-100"
+                    value="Add" />
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

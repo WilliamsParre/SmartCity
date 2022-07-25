@@ -11,6 +11,7 @@ import javax.faces.bean.SessionScoped;
 import javax.servlet.http.HttpSession;
 
 import com.db.DataBase;
+import com.entity.Users;
 import com.utils.SessionUtils;
 
 
@@ -52,23 +53,32 @@ public class AdminLogin implements Serializable {
 	public String validateUsernamePassword() {
 		Connection con = DataBase.getDBConnection();
 		PreparedStatement ps;
+		Users dbUser = null;
 		boolean valid=false;
 		try {
-			ps = con.prepareStatement("select username, password from admins where username = ? and password = ?");
+			ps = con.prepareStatement("select first_name,last_name,username,email  from admins where username = ? and password = ?");
 			ps.setString(1, this.user);
 			ps.setString(2, this.pwd);
 
 			ResultSet rs = ps.executeQuery();
 			if (rs.next())
+			{
+				dbUser=new Users();
+				dbUser.setFirst_name(rs.getString(1));
+				dbUser.setLast_name(rs.getString(2));
+				dbUser.setUsername(rs.getString(3));
+				dbUser.setEmail(rs.getString(4));
+				
 				valid=true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		if (valid) {
 			HttpSession session = SessionUtils.getSession();
-			session.setAttribute("username", this.user);
-			return "/admin/admin.jsf?faces-redirect=true";
+			session.setAttribute("user", dbUser);
+			return "/admin/dashboard.jsf?faces-redirect=true";
 		} else {
 			return "/admin_login.jsf?faces-redirect=true";
 		}

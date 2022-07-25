@@ -1,12 +1,119 @@
-<ui:composition
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    template="/admin/admin.xhtml">   
+<ui:composition xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/admin/admin.xhtml">
     <ui:define name="admin_title">
         <title>Manage</title>
     </ui:define>
 
     <ui:define name="admin_content">
-    	<h1>Hello from Manage</h1>
+        <div>
+            <div class="container">
+                <button class="btn btn-outline-primary btn-lg mb-4" onclick="showTourism()">Tourism</button>
+                <button class="btn btn-outline-secondary btn-lg mb-4" onclick="showEducation()">Education</button>
+                <button class="btn btn-outline-info btn-lg mb-4" onclick="showJobSeekers()">Job Seekers</button>
+                <button class="btn btn-outline-dark btn-lg mb-4" onclick="showBussiness()">Bussiness</button>
+                <br />
+                <div class="col-lg-12 col-sm-12" id="tourism" style="display:Block;">
+                    <div class="d-flex justify-content-between  mb-3">
+                    	<h3><span class="badge bg-danger p-2">Tourist Spots</span></h3>
+                    	<a class="btn btn-primary mb-2 text-decoration-none" href="addTouristSpot.jsf">Add Tourist Spot</a>
+                    </div>
+                    <div class="col">
+                        <table class="table table-bordered table-hover rounded">
+                            <thead class="thead-light bg-info text-white">
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Place</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col">Start Time</th>
+                                    <th scope="col">End Time</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat var="spot" value="#{touristSpotBean.getTouristSpots()}">
+                                <tr>
+                                    <td>#{spot.id}</td>
+                                    <td>#{spot.name}</td>
+                                    <td><a href="#{spot.place}">#{spot.place}</a></td>
+                                    <td>#{spot.location}</td>
+                                    <td>#{spot.start_time}</td>
+                                    <td>#{spot.end_time}</td>
+                                    <h:form>
+                                    <td><h:commandButton class="btn btn-outline-danger" action="#{touristSpotBean.deleteTouristSpotsById(spot.id)}" value="Delete" />
+                                    </td>
+                                    </h:form>
+                                </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-sm-12" id="education" style="display:None;">
+                    <h3 class="badge bg-danger p-2">Education</h3>
+                    <div class="col">
+                    	Education                   
+                    </div>
+                </div>
+                <div class="col-lg-12 col-sm-12" id="jobSeekers" style="display:None;">
+                    <h3 class="badge bg-danger p-2">Job Seekers</h3>
+                    <div class="col">
+                        Job Seekers
+                    </div>
+                </div>
+                <div class="col-lg-12 col-sm-12" id="bussiness" style="display:None;">
+                    <h3 class="badge bg-danger p-2">Bussiness</h3>
+                    <div class="col">
+                        Bussiness
+                    </div>
+                </div>
+            </div>
+            <script>
+                function showJobSeekers() {
+                    if (document.getElementById('jobSeekers').style.display == "none") {
+                        document.getElementById('jobSeekers').style.display = "block";
+                        document.getElementById('tourism').style.display = "none";
+                        document.getElementById('education').style.display = "none";
+                        document.getElementById('bussiness').style.display = "none";
+                    }
+                    else {
+                        document.getElementById('jobSeekers').style.display = "none";
+                    }
+                }
+                function showTourism() {
+                    if (document.getElementById('tourism').style.display == "none") {
+                        document.getElementById('tourism').style.display = "block";
+                        document.getElementById('jobSeekers').style.display = "none";
+                        document.getElementById('education').style.display = "none";
+                        document.getElementById('bussiness').style.display = "none";
+
+                    } else {
+                        document.getElementById('tourism').style.display = "none";
+                    }
+                }
+                function showEducation() {
+                    if (document.getElementById('education').style.display == "none") {
+                        document.getElementById('education').style.display = "block";
+                        document.getElementById('jobSeekers').style.display = "none";
+                        document.getElementById('tourism').style.display = "none";
+                        document.getElementById('bussiness').style.display = "none";
+                    }
+                    else {
+                        document.getElementById('education').style.display = "none";
+                    }
+                }
+                function showBussiness() {
+                    if (document.getElementById('bussiness').style.display == "none") {
+                        document.getElementById('bussiness').style.display = "block";
+                        document.getElementById('education').style.display = "none";
+                        document.getElementById('jobSeekers').style.display = "none";
+                        document.getElementById('tourism').style.display = "none";
+                    }
+                    else {
+                        document.getElementById('bussiness').style.display = "none";
+                    }
+                }
+            </script>
+        </div>
     </ui:define>
 </ui:composition>

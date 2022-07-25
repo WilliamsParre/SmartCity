@@ -49,7 +49,7 @@ public class Login implements Serializable {
 		boolean valid = LoginDAO.validate(user, pwd);
 		if (valid) {
 			HttpSession session = SessionUtils.getSession();
-			session.setAttribute("username", user);
+			session.setAttribute("user", user);
 			System.out.println("I am here");
 			return "/user/home.jsf?faces-redirect=true";
 		} else {

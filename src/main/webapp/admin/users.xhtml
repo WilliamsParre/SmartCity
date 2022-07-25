@@ -1,12 +1,44 @@
 <ui:composition
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
     template="/admin/admin.xhtml">   
     <ui:define name="admin_title">
         <title>Manage Users</title>
     </ui:define>
 
     <ui:define name="admin_content">
-    	<h1>Hello from Users</h1>
+    <div>
+    	<div class="d-flex justify-content-between mb-4">	
+    		<h4><span class="badge bg-info"><strong>Users</strong></span></h4>
+    		<a href="addUser.jsf" class="btn btn-info">Add User</a>
+    	</div>
+		<table class="table table-bordered table-striped table-hover">
+			  <thead>
+			    <tr class="bg-dark text-light">
+			      <th scope="col">Id</th>
+			      <th scope="col">First Name</th>
+			      <th scope="col">Last Name</th>
+			      <th scope="col">Username</th>
+			      <th scope="col">Email</th>
+			      <th scope="col">Update</th>
+			      <th scope="col">Delete</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  <ui:repeat value="#{users.getUsersData()}" var="user">
+			    <tr>
+			      <th scope="row">#{user.id}</th>
+			      <td>#{user.first_name}</td>
+			      <td>#{user.last_name}</td>
+			      <td>#{user.username}</td>
+			      <td>#{user.email}</td>
+			      <td><button class="btn btn-outline-success">Update</button></td>
+			      <td><h:form><h:commandButton action="#{users.deleteUser(user.id)}" styleClass="btn btn-outline-danger" value="Delete" /></h:form></td>
+			    </tr>
+			   </ui:repeat>
+			  </tbody>
+		</table>
+    </div>    	
     </ui:define>
 </ui:composition>
