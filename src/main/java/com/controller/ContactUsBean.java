@@ -1,7 +1,6 @@
 package com.controller;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.faces.bean.ManagedBean;

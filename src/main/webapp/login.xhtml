@@ -18,12 +18,12 @@
 							<div class="form-floating mb-3">
 							  <h:inputText class="form-control" id="username" placeholder="name@example.com" value="#{login.user}"/>
 							  <label for="username">User Name</label>
-							  <h:message for="username"></h:message>
+							  <h:message for="username" class="text-danger"></h:message>
 							 </div>
 		        			<div class="form-floating mb-3">
 							  <h:inputSecret class="form-control" id="password" placeholder="Password" value="#{login.pwd}"/>
 							  <label for="password">Password</label>
-							  <h:message for="password"></h:message>
+							  <h:message for="password" class="text-danger"></h:message>
 							</div>
 							<h:commandButton action="#{login.validateUsernamePassword()}" class="btn btn-primary btn-lg btn-block w-100" value="Login" />
 		        	</h:form>

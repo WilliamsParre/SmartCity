@@ -2,7 +2,8 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:c="http://java.sun.com/jsp/jstl/core"
-    template="/admin/admin.xhtml">   
+    template="/admin/admin.xhtml"
+                     xmlns:f="http://java.sun.com/jsf/core">   
     <ui:define name="admin_title">
         <title>Manage Users</title>
     </ui:define>
@@ -33,7 +34,12 @@
 			      <td>#{user.last_name}</td>
 			      <td>#{user.username}</td>
 			      <td>#{user.email}</td>
-			      <td><button class="btn btn-outline-success">Update</button></td>
+			      <td><h:form>
+			      			<h:commandButton action="/admin/updateUser.jsf" value="Update" styleClass="btn btn-outline-success" actionListener="#{updateUser.attrListener}">		      				
+			      				<f:attribute name="pk" value="#{user.id}" />
+			      			</h:commandButton>
+			      	</h:form>
+			      </td>
 			      <td><h:form><h:commandButton action="#{users.deleteUser(user.id)}" styleClass="btn btn-outline-danger" value="Delete" /></h:form></td>
 			    </tr>
 			   </ui:repeat>

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.servlet.http.HttpSession;
+import javax.validation.constraints.Size;
 
 import com.db.DataBase;
 import com.entity.Users;
@@ -20,9 +21,10 @@ import com.utils.SessionUtils;
 public class AdminLogin implements Serializable {
 
 	private static final long serialVersionUID = 1094801825228386363L;
-	
+	@Size(min=1, message="Password cannot be blank")
 	private String pwd;
 	private String msg;
+	@Size(min=1, message="Username cannot be blank")
 	private String user;
 
 	public String getPwd() {

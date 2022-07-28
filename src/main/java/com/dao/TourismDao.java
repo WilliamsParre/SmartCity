@@ -11,6 +11,10 @@ public interface TourismDao {
 	
 	List<TouristSpot> getTouristSpots();
 	
-	int insertTouristSpot(int id, String name, String place, String location,String start_time, String end_time);
+	TouristSpot insertTouristSpot(TouristSpot touristSpot);
+	
+	TouristSpot updateTouristSpot(TouristSpot touristSpot, int id);
+	
+	int deleteTouristSpotById(int id);
 	
 }

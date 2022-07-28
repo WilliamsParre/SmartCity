@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.servlet.http.HttpSession;
+import javax.validation.constraints.Size;
 
 import com.dao.LoginDAO;
 import com.utils.SessionUtils;
@@ -15,9 +16,10 @@ import com.utils.SessionUtils;
 public class Login implements Serializable {
 
 	private static final long serialVersionUID = 1094801825228386363L;
-	
+	@Size(min=1, message="Password cannot be blank")
 	private String pwd;
 	private String msg;
+	@Size(min=1, message="User name cannot be blank")
 	private String user;
 
 	public String getPwd() {
@@ -50,9 +52,9 @@ public class Login implements Serializable {
 		if (valid) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("user", user);
-			System.out.println("I am here");
 			return "/user/home.jsf?faces-redirect=true";
 		} else {
+//			this.msg = "User name or password doesn't exist chechk your credentials and try again";
 			return "/login.jsf?faces-redirect=true";
 		}
 	}

@@ -12,14 +12,14 @@
 					<h:form class="p-1 mt-5">
 		        			<h2 class="mb-4 text-secondary text-center"><strong>Admin Log In</strong></h2>
 							<div class="form-floating mb-3">
-							  <h:inputText class="form-control" id="username" placeholder="name@example.com" value="#{admin_login.user}"/>
+							  <h:inputText class="form-control" id="username" value="#{admin_login.user}" />
 							  <label for="username">User Name</label>
-							  <h:message for="username"></h:message>
+							  <h:message for="username" class="text-danger"></h:message>
 							 </div>
 		        			<div class="form-floating mb-4">
-							  <h:inputSecret class="form-control" id="password" placeholder="Password" value="#{admin_login.pwd}"/>
+							  <h:inputSecret class="form-control" id="password" value="#{admin_login.pwd}"/>
 							  <label for="password">Password</label>
-							  <h:message for="password"></h:message>
+							  <h:message for="password" class="text-danger"></h:message>
 							</div>
 							<h:commandButton action="#{admin_login.validateUsernamePassword()}" class="btn btn-primary btn-lg btn-block w-100" value="Login" />
 		        	</h:form>
